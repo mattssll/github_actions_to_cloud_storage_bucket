@@ -12,6 +12,6 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.gcp_credentials }}
-          path: /test1
+          path: ./test1
           destination: data_team_test2
           parent: false
