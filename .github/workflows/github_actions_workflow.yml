@@ -8,6 +8,9 @@ jobs:
   upload-to-cloud-storage:
     runs-on: ubuntu-latest
     steps:
+      - id: show-ls
+        run: | 
+          ls
       - id: upload-file
         uses: google-github-actions/upload-cloud-storage@main
         with:
