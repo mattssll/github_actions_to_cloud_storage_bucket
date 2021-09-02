@@ -8,6 +8,7 @@ jobs:
   upload-to-cloud-storage:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - id: show-ls
         run: | 
           ls
