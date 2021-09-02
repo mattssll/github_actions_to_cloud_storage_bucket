@@ -12,5 +12,5 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.gcp_credentials }}
-          path: ../airflow/test1
+          path: airflow
           destination: data_team_test2
