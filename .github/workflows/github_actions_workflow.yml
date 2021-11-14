@@ -5,13 +5,18 @@ on:
       - main
       - develop 
 jobs:
-  upload-to-cloud-storage-action:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
         run: | 
           ls
+
+  upload-to-cloud-storage-action:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - id: upload-file
         uses: google-github-actions/upload-cloud-storage@main
         with:
@@ -20,12 +25,9 @@ jobs:
           destination: data_team_test2
 
   upload-to-cloud-rsync:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - id: show-ls
-        run: | 
-          ls
       - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
         with:
