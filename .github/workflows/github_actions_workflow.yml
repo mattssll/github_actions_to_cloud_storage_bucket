@@ -17,6 +17,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - id: show-ls
+        run: | 
+          ls
       - id: upload-file
         uses: google-github-actions/upload-cloud-storage@main
         with:
@@ -28,6 +32,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - id: show-ls
+        run: | 
+          ls
       - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
         with:
