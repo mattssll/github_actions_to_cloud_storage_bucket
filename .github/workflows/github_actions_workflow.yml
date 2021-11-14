@@ -18,12 +18,12 @@ jobs:
           credentials: ${{ secrets.gcp_credentials }}
           path: to_gcs
           destination: data_team_test2
-      - id: Set up Cloud SDK
+
+      - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
         with:
           project_id: arched-photon-194421
           service_account_key: ${{ secrets.gcp_credentials }}
           export_default_credentials: true
-
-      - id: Use gcloud CLI
+      - id: use-gcloud-cli
         run: gcloud info
