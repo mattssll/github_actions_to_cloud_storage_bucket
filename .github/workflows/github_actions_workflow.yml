@@ -22,7 +22,7 @@ jobs:
       - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
         with:
-          project_id: arched-photon-194421
+          project_id: ${{ secrets.gcp_project }}
           service_account_key: ${{ secrets.gcp_credentials }}
           export_default_credentials: true
       - id: use-gcloud-cli
