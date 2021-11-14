@@ -27,3 +27,6 @@ jobs:
           export_default_credentials: true
       - id: use-gcloud-cli
         run: gcloud info
+      - id: gsutils-rsync-to-gcs
+        run: gsutil rsync to_gcs gs://data_team_test2/rsync_test_ci_to_gcs
+
