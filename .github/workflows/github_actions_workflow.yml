@@ -12,9 +12,20 @@ jobs:
       - id: show-ls
         run: | 
           ls
+      # Through google upload-file action
       - id: upload-file
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.gcp_credentials }}
           path: to_gcs
           destination: data_team_test2
+      # Through gsutils rsync now - better option
+      - id: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          # project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.gcp_credentials }}
+          export_default_credentials: true
+
+      - id: Use gcloud CLI
+        run: gcloud info
