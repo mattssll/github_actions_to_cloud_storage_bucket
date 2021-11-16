@@ -1,2 +1,2 @@
 print("hii"
-print('l'
+print('ls'
