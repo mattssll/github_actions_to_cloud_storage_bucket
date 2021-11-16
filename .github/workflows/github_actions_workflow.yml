@@ -19,7 +19,8 @@ jobs:
         with:
           github_token: ${{ secrets.gh_token }}
           level: error
-          repoter: foo
+          reporter: foo
+          entryPoint: .
 
   upload-to-cloud-storage-action:
     needs: python_syntax_validation
