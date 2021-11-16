@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
-        run: | 
+        run: |
           ls
 
   pyflakes:
@@ -26,6 +26,8 @@ jobs:
         uses: reviewdog/action-pyflakes@master
         with:
           github_token: ${{ secrets.gh_token }}
+          reporter: anyone_gcp_yeah
+          level: error
 
 
   upload-to-cloud-storage-action:
