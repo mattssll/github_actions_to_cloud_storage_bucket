@@ -17,7 +17,7 @@ jobs:
         run: |
           ls
 
-  pyflakes:
+  python_syntax_validation:
     needs: setup
     runs-on: ubuntu-latest
     steps:
