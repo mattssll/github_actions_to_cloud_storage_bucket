@@ -20,7 +20,7 @@ jobs:
           github_token: ${{ secrets.gh_token }}
           level: error
           reporter: foo
-          entryPoint: .
+          entryPoint: ./
 
   upload-to-cloud-storage-action:
     needs: python_syntax_validation
