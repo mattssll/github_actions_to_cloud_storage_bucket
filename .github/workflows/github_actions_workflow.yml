@@ -9,16 +9,8 @@ on:
       - main
       - development
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - id: show-ls
-        run: |
-          ls
 
   python_syntax_validation:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,10 +18,10 @@ jobs:
         uses: reviewdog/action-pyflakes@master
         with:
           github_token: ${{ secrets.gh_token }}
-
+          level: error
 
   upload-to-cloud-storage-action:
-    needs: setup
+    needs: python_syntax_validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -44,7 +36,7 @@ jobs:
           destination: data_team_test2
 
   upload-to-cloud-rsync:
-    needs: setup
+    needs: python_syntax_validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
