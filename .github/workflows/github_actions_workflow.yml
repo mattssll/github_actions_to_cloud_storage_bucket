@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
-        uses: reviewdog/action-pyflakes@master
+        uses: reviewdog/action-pyflakes
         with:
           github_token: ${{ secrets.gh_token }}
           level: error
