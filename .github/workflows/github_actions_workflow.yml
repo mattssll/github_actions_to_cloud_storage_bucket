@@ -15,15 +15,14 @@ jobs:
 
   pyflakes:
     needs: setup
-    name: python code validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
         uses: reviewdog/action-pyflakes@master
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-check # Change reporter.
+          github_token: ${{ secrets.gh_token }}
+
 
   upload-to-cloud-storage-action:
     needs: setup
