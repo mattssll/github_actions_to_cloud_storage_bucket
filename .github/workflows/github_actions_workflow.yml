@@ -28,7 +28,6 @@ jobs:
           github_token: ${{ secrets.gh_token }}
           level: error
 
-
   upload-to-cloud-storage-action:
     needs: setup
     runs-on: ubuntu-latest
