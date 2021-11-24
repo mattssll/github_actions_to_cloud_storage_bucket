@@ -1,2 +1,1 @@
-if y==0:
-    print('hi')
+print('hi')
