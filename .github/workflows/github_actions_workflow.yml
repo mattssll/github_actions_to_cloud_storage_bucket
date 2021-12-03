@@ -1,4 +1,5 @@
 name: learn-github-actions
+
 on:
   push:
     branches:
@@ -13,7 +14,7 @@ jobs:
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
     if: github.event.name == 'pull_request'
-     steps:
+    steps:
       - uses: actions/checkout@v2
       - name: pyflakes
         uses: reviewdog/action-pyflakes@master
