@@ -10,7 +10,6 @@ on:
       - main
       - develop
 jobs:
-
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
     if: github.event.name == 'pull_request'
