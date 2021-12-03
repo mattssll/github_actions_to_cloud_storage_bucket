@@ -14,7 +14,6 @@ jobs:
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
     if: github.event.name == 'pull_request'
-    environment: development
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
@@ -22,7 +21,6 @@ jobs:
   prod_py_syntax_validation:
     runs-on: ubuntu-latest
     if: github.event.ref == 'ref/heads/main'
-    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
@@ -33,7 +31,6 @@ jobs:
   upload-to-cloud-storage-action:
     needs: dev_py_syntax_validation
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: auth
@@ -49,7 +46,6 @@ jobs:
   upload-to-cloud-rsync:
     needs: prod_py_syntax_validation
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
