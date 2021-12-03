@@ -1,4 +1,5 @@
 name: learn-github-actions
+
 on:
   push:
     branches:
@@ -10,19 +11,29 @@ on:
       - develop
 jobs:
 
-  python_syntax_validation:
+  dev_py_syntax_validation:
     runs-on: ubuntu-latest
+    if: github.event.name == 'pull_request'
+    environment: development
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
         uses: reviewdog/action-pyflakes@master
-        with:
-          github_token: ${{ secrets.gh_token }}
-          level: error
+  prod_py_syntax_validation:
+    runs-on: ubuntu-latest
+    if: github.event.ref == 'ref/heads/main'
+    environment: production
+    steps:
+      - uses: actions/checkout@v2
+      - name: pyflakes
+        uses: reviewdog/action-pyflakes@master
+    
+          
 
   upload-to-cloud-storage-action:
-    needs: python_syntax_validation
+    needs: dev_py_syntax_validation
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: auth
@@ -36,12 +47,13 @@ jobs:
           destination: data_team_test2
 
   upload-to-cloud-rsync:
-    needs: python_syntax_validation
+    needs: prod_py_syntax_validation
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
-        run: | 
+        run: |
           ls
       - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
