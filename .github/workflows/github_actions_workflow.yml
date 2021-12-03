@@ -10,8 +10,9 @@ on:
       - develop
 jobs:
 
-  python_syntax_validation:
+  dev_py_syntax_validation:
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
@@ -23,6 +24,7 @@ jobs:
   upload-to-cloud-storage-action:
     needs: python_syntax_validation
     runs-on: ubuntu-latest
+    environment: prlduction
     steps:
       - uses: actions/checkout@v2
       - id: auth
@@ -38,10 +40,11 @@ jobs:
   upload-to-cloud-rsync:
     needs: python_syntax_validation
     runs-on: ubuntu-latest
+    environment: prlduction
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
-        run: | 
+        run: |
           ls
       - id: set-cloud-sdk
         uses: google-github-actions/setup-gcloud@master
