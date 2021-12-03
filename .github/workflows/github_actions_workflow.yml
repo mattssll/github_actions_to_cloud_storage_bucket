@@ -24,7 +24,7 @@ jobs:
   upload-to-cloud-storage-action:
     needs: python_syntax_validation
     runs-on: ubuntu-latest
-    environment: prlduction
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: auth
@@ -40,7 +40,7 @@ jobs:
   upload-to-cloud-rsync:
     needs: python_syntax_validation
     runs-on: ubuntu-latest
-    environment: prlduction
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - id: show-ls
