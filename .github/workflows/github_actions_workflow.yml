@@ -12,7 +12,7 @@ jobs:
 
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
-    if: github.event.ref == 'ref/heads/develop'
+    if: github.event.name == 'pull_request'
     environment: development
     steps:
       - uses: actions/checkout@v2
