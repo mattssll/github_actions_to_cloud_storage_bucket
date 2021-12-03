@@ -1,4 +1,4 @@
-print("hello world")
+print("hello_world")
 x=0
 if x==0:
     print("x is 0")
