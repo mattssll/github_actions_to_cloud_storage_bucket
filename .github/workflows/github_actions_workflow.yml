@@ -12,14 +12,15 @@ jobs:
 
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
+    if: github.event.ref == 'ref/heads/develop'
     environment: development
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
         uses: reviewdog/action-pyflakes@master
-
   prod_py_syntax_validation:
     runs-on: ubuntu-latest
+    if: github.event.ref == 'ref/heads/main'
     environment: production
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +30,7 @@ jobs:
           
 
   upload-to-cloud-storage-action:
-    needs: prod_py_syntax_validation
+    needs: dev_py_syntax_validation
     runs-on: ubuntu-latest
     environment: production
     steps:
