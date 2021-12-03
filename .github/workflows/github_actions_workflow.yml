@@ -1,25 +1,20 @@
 name: learn-github-actions
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+  - push
+  - pull_request
+
 jobs:
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
-    if: github.event.name == 'pull_request'
+    if: github.ref == 'ref/heads/develop'
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
         uses: reviewdog/action-pyflakes@master
   prod_py_syntax_validation:
     runs-on: ubuntu-latest
-    if: github.event.ref == 'ref/heads/main'
+    if: github.ref == 'ref/heads/develop'
     steps:
       - uses: actions/checkout@v2
       - name: pyflakes
