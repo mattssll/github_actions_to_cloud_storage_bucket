@@ -48,7 +48,7 @@ jobs:
           destination: data_team_test2
 
   upload-to-cloud-rsync:
-    needs: python_syntax_validation
+    needs: prod_py_syntax_validation
     runs-on: ubuntu-latest
     environment: production
     steps:
