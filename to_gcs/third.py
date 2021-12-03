@@ -1,2 +1,2 @@
-print("omg")
-
+print("hello")
+x=0
