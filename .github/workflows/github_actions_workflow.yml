@@ -4,6 +4,7 @@ on:
   - push
   - pull_request
 
+
 jobs:
   dev_py_syntax_validation:
     runs-on: ubuntu-latest
